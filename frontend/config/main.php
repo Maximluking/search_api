@@ -54,8 +54,8 @@ return [
                 'contact' => 'site/contact',
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'address',
-                    'prefix' => 'api',
+                    'controller' => 'api/address',
+                    'pluralize' => false,
                     'extraPatterns' => [
                         'GET city' => 'city',
                         'GET street' => 'street',

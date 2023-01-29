@@ -1,9 +1,8 @@
 <?php
 
-namespace frontend\module\controllers;
+namespace frontend\modules\api\controllers;
 
-use yii\rest\Controller;
-class AddressController extends Controller
+class AddressController extends BaseController
 {
     /**
      * @return array
