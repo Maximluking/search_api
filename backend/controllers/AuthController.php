@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use common\models\LoginForm;
+use backend\models\forms\AdminLoginForm;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -10,9 +10,9 @@ use yii\web\Controller;
 use yii\web\Response;
 
 /**
- * Site controller
+ * Auth controller
  */
-class SiteController extends Controller
+class AuthController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -50,19 +50,9 @@ class SiteController extends Controller
     {
         return [
             'error' => [
-                'class' => \yii\web\ErrorAction::class,
+                'class' => 'yii\web\ErrorAction',
             ],
         ];
-    }
-
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
     }
 
     /**
@@ -76,15 +66,14 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $this->layout = 'blank';
-
-        $model = new LoginForm();
+        $model = new AdminLoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
 
         $model->password = '';
 
+        $this->layout = 'main-login';
         return $this->render('login', [
             'model' => $model,
         ]);

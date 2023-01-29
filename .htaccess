@@ -11,15 +11,15 @@ SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
 
 <IfModule mod_rewrite.c>
     #backend
-    RewriteCond %{REQUEST_URI} ^/(cargo)
-    RewriteRule ^cargo/assets/(.*)$ backend/web/assets/$1 [L]
-    RewriteRule ^cargo/css/(.*)$ backend/web/css/$1 [L]
-    RewriteRule ^cargo/js/(.*)$ backend/web/js/$1 [L]
-    RewriteRule ^cargo/fonts/(.*)$ backend/web/fonts/$1 [L]
-    RewriteRule ^cargo/images/(.*)$ backend/web/images/$1 [L]
-    RewriteRule ^cargo/favicon.ico$ backend/web/favicon.ico$1 [L]
+    RewriteCond %{REQUEST_URI} ^/(admin)
+    RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+    RewriteRule ^admin/css/(.*)$ backend/web/css/$1 [L]
+    RewriteRule ^admin/js/(.*)$ backend/web/js/$1 [L]
+    RewriteRule ^admin/fonts/(.*)$ backend/web/fonts/$1 [L]
+    RewriteRule ^admin/images/(.*)$ backend/web/images/$1 [L]
+    RewriteRule ^admin/favicon.ico$ backend/web/favicon.ico$1 [L]
     RewriteCond %{REQUEST_URI} !^/backend/web/(assets|js|css|fonts|images)/
-    RewriteCond %{REQUEST_URI} ^/(cargo)
+    RewriteCond %{REQUEST_URI} ^/(admin)
     RewriteRule ^.*$ backend/web/index.php [L]
     #frontend
     RewriteCond %{REQUEST_URI} ^/(assets|css|js|images)
