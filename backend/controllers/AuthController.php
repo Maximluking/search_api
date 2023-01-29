@@ -44,18 +44,6 @@ class AuthController extends Controller
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-        ];
-    }
-
-    /**
      * Login action.
      *
      * @return string|Response
@@ -89,5 +77,26 @@ class AuthController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+
+        if ($exception !== null) {
+            $statusCode = $exception->statusCode;
+            $name = $exception->getName();
+            $message = $exception->getMessage();
+
+            $this->layout = 'main-login';
+            return $this->render('error', [
+                'exception' => $exception,
+                'statusCode' => $statusCode,
+                'name' => $name,
+                'message' => $message
+            ]);
+        }
+
+        return false;
     }
 }
