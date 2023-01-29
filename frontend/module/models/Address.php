@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models;
+namespace frontend\module\models;
 class Address extends \common\models\Address
 {
     public function fields()
