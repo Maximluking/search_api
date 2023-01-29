@@ -1,0 +1,38 @@
+AddDefaultCharset UTF-8
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    # hide files and folders
+    RedirectMatch 404 /\.git
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    #backend
+    RewriteCond %{REQUEST_URI} ^/(cargo)
+    RewriteRule ^cargo/assets/(.*)$ backend/web/assets/$1 [L]
+    RewriteRule ^cargo/css/(.*)$ backend/web/css/$1 [L]
+    RewriteRule ^cargo/js/(.*)$ backend/web/js/$1 [L]
+    RewriteRule ^cargo/fonts/(.*)$ backend/web/fonts/$1 [L]
+    RewriteRule ^cargo/images/(.*)$ backend/web/images/$1 [L]
+    RewriteRule ^cargo/favicon.ico$ backend/web/favicon.ico$1 [L]
+    RewriteCond %{REQUEST_URI} !^/backend/web/(assets|js|css|fonts|images)/
+    RewriteCond %{REQUEST_URI} ^/(cargo)
+    RewriteRule ^.*$ backend/web/index.php [L]
+    #frontend
+    RewriteCond %{REQUEST_URI} ^/(assets|css|js|images)
+    RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+    RewriteRule ^fonts/(.*)$ frontend/web/fonts/$1 [L]
+    RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
+    RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
+    RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
+    RewriteRule ^uploads/(.*)$ frontend/web/uploads/$1 [L]
+    RewriteRule ^(.*)$ frontend/web/$1 [L]
+    RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(assets|fonts|css|js|images|uploads)/
+    RewriteCond %{REQUEST_URI} !index.php
+    RewriteCond %{REQUEST_FILENAME} !-f [OR]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^.*$ frontend/web/index.php
+</IfModule>
