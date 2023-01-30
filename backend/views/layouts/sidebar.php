@@ -20,7 +20,7 @@ use hail812\adminlte\widgets\Menu;
         <nav class="mt-2">
             <?php
 
-                $items[] = ['label' => 'Tariffs', 'iconStyle' => 'fas', 'icon' => 'map-marked-alt', 'url' => ['/address'], 'active' => in_array(Yii::$app->controller->id, ['address'])];
+                $items[] = ['label' => 'Addresses', 'iconStyle' => 'fas', 'icon' => 'map-marked-alt', 'url' => ['/address'], 'active' => in_array(Yii::$app->controller->id, ['address'])];
                 echo Menu::widget([
                     'items' => $items,
                 ]);
