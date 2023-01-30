@@ -42,8 +42,6 @@ class DataBaseController extends Controller
                 $address->city = $city;
                 $address->city_region = null;
                 $address->save();
-
-                sleep(1);
             }
 
             sleep(2);

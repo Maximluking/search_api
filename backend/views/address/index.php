@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'region',
                             'city',
                             'city_region',
-                            //'street',
+                            'street',
 
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
