@@ -44,7 +44,22 @@ class AddressController extends BaseController
             ]
         ]);
 
-        return $recipeSphinxDataProvider;
+        $responseArray = [];
+        foreach ($recipeSphinxDataProvider->getModels() as $model) {
+            $responseArray[] = [
+                'description' => "Область, Регіон, Місто, 'Місто-Регіон', Вулиця",
+                'place' => [
+                    'country' => 'Україна',
+                    'oblast' => $model['oblast']?? null,
+                    'region' => $model['region']?? null,
+                    'city' => $model['city']?? null,
+                    'city_region' => $model['city_region']?? null,
+                    'street' => $model['street']?? null,
+                ]
+            ];
+        }
+
+        return $responseArray;
     }
 
     public function actionStreet()
@@ -73,6 +88,21 @@ class AddressController extends BaseController
             ]
         ]);
 
-        return $recipeSphinxDataProvider;
+        $responseArray = [];
+        foreach ($recipeSphinxDataProvider->getModels() as $model) {
+            $responseArray[] = [
+                'description' => "Область, Регіон, Місто, 'Місто-Регіон', Вулиця",
+                'place' => [
+                    'country' => 'Україна',
+                    'oblast' => $model['oblast']?? null,
+                    'region' => $model['region']?? null,
+                    'city' => $model['city']?? null,
+                    'city_region' => $model['city_region']?? null,
+                    'street' => $model['street']?? null,
+                ]
+            ];
+        }
+
+        return $responseArray;
     }
 }
