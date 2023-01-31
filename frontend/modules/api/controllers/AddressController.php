@@ -54,7 +54,7 @@ class AddressController extends BaseController
         $responseArray = [];
         foreach ($recipeSphinxDataProvider->getModels() as $model) {
             $responseArray[] = [
-                'description' => "Область, Регіон, Місто, 'Місто-Регіон', Вулиця",
+                'description' => 'Область, Район, Місто, Район-міста, Вулиця',
                 'place' => [
                     'country' => 'Україна',
                     'oblast' => $model['oblast']?? null,
@@ -107,7 +107,7 @@ class AddressController extends BaseController
         $responseArray = [];
         foreach ($recipeSphinxDataProvider->getModels() as $model) {
             $responseArray[] = [
-                'description' => "Область, Регіон, Місто, 'Місто-Регіон', Вулиця",
+                'description' => 'Область, Район, Місто, Район-міста, Вулиця',
                 'place' => [
                     'country' => 'Україна',
                     'oblast' => $model['oblast']?? null,
