@@ -78,7 +78,7 @@ environments/            contains environment-based overrides
 <h3>Installing sphinx on Ubuntu</h3>
 <ul>
   <li><code>sudo apt-get install sphinxsearch</code></li>
-  <li>setup database params in first section of project sphinx config <code>backup/sphinx.conf</code> and <code>common/config/main.php</code> too in sphinx section</li>
+  <li>setup database params (replace DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT) in first section of project sphinx config <code>backup/sphinx.conf</code> and <code>common/config/main.php</code> too in sphinx section</li>
   <li><p>Copy sphinx config from project backup directory to directory <code>/etc/sphinxsearch/</code> on your OS</p></li>
   <li><p>Copy <code>backend/wordforms.txt</code> to <code>/usr/local/share/sphinx/wordforms/</code> directory or another(setup this params in sphinx.conf) </p></li>
   <li><p><code>sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch</code></p></li>
