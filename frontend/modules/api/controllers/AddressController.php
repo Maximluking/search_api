@@ -30,11 +30,18 @@ class AddressController extends BaseController
     public function actionCity()
     {
         $city = trim(Yii::$app->request->get('city'));
+        $city = preg_replace("#[[:punct:]]#", " ", $city);
+        $city = preg_replace('#[\s]+#s', ' ', $city);
+        $city = trim(mb_strtolower($city));
+
+        if (strlen($city) < 3)
+            return [];
+
         $query = new \yii\sphinx\Query();
         $query
-            ->select(['id', 'oblast', 'region', 'city'])
+            ->select(['id', 'oblast', 'region', 'city', 'pure_city'])
             ->from('search_api_fields_short')
-            ->match(new MatchExpression('@city :city', ['city' => $city]));
+            ->match(new MatchExpression('@pure_city :pure_city', ['pure_city' => $city]));
 
         $recipeSphinxDataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,8 +60,10 @@ class AddressController extends BaseController
                     'oblast' => $model['oblast']?? null,
                     'region' => $model['region']?? null,
                     'city' => $model['city']?? null,
+                    'city_processed' => $model['pure_city']?? null,
                     'city_region' => $model['city_region']?? null,
                     'street' => $model['street']?? null,
+                    'street_processed' => $model['pure_street']?? null,
                 ]
             ];
         }
@@ -69,15 +78,22 @@ class AddressController extends BaseController
         $city = trim(Yii::$app->request->get('city'));
         $street = trim(Yii::$app->request->get('street'));
 
+        $street = preg_replace("#[[:punct:]]#", " ", $street);
+        $street = preg_replace('#[\s]+#s', ' ', $street);
+        $street = trim(mb_strtolower($street));
+
+        if (strlen($street) < 3)
+            return [];
+
         $query = new \yii\sphinx\Query();
         $query
-            ->select(['id', 'oblast', 'region', 'city', 'city_region', 'street'])
+            ->select(['id', 'oblast', 'region', 'city', 'pure_city', 'city_region', 'street', 'pure_street'])
             ->from('search_api_fields_full')
             ->match((new MatchExpression())
                 ->match(['@oblast' => $oblast])
                 ->andMatch(['@region' => $region])
                 ->andMatch(['@city' => $city])
-                ->andMatch(['@street' => $street])
+                ->andMatch(['@pure_street' => $street])
             );
 
         $recipeSphinxDataProvider = new ActiveDataProvider([
@@ -97,8 +113,10 @@ class AddressController extends BaseController
                     'oblast' => $model['oblast']?? null,
                     'region' => $model['region']?? null,
                     'city' => $model['city']?? null,
+                    'city_processed' => $model['pure_city']?? null,
                     'city_region' => $model['city_region']?? null,
                     'street' => $model['street']?? null,
+                    'street_processed' => $model['pure_street']?? null,
                 ]
             ];
         }
