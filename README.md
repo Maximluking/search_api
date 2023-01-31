@@ -91,6 +91,6 @@ environments/            contains environment-based overrides
 <h3>Api endpoints</h3>
 <p>Minimal length of search sentence must be 3 and more letters</p>
 <ul>
-  <li><p>GET <code>/api/address/city?city=search_town</code> - get all cities, which have name search_town</p></li>
-  <li><p>GET <code>/api/address/street?oblast=search_oblast&region=search_region&city=search_city&street=search_street</code> - get all streets which have name search_street, params: search_oblast, search_region, search_city you must use from first endpoint answer. You can use params for first and second endpoints -- per-page (1-100 items per page, default 20), -- page - pagination param if response has more than one page</p></li>
+  <li><p>GET <code lang="http">/api/address/city?city=search_town</code> - get all cities, which have name search_town</p></li>
+  <li><p>GET <code lang="http">/api/address/street?oblast=search_oblast&region=search_region&city=search_city&street=search_street</code> - get all streets which have name search_street, params: search_oblast, search_region, search_city you must use from first endpoint answer. You can use params for first and second endpoints -- per-page (1-100 items per page, default 20), -- page - pagination param if response has more than one page</p></li>
 </ul>
