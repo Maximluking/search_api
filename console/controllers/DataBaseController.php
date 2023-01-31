@@ -172,12 +172,12 @@ class DataBaseController extends Controller
     public function actionProcessStreets()
     {
         $addressesTotalCount = Address::find()
-            ->where(['not', ['city' => null]])
+            ->where(['not', ['street' => null]])
             ->count();
 
         $limit = 100;
         $prefixArray = ['вул.', 'пров.', 'пр.', 'б.', 'пл.', 'ст.', 'х.', 'ім.']; // result array from actionUniqueStreetPrefixes()
-        $replaceArray = ['вулиця ', 'провулок ', 'проспект ', 'бульвар ', 'площа ', 'станція ', 'село ', 'імені ']; // result array from actionUniqueStreetPrefixes()
+        $replaceArray = ['вулиця ', 'провулок ', 'проспект ', 'бульвар ', 'площа ', 'станція ', 'село ', 'імені '];
         foreach (range(0, $addressesTotalCount, $limit) as $offset) {
             $addresses = Address::find()
                 ->where(['not', ['street' => null]])
