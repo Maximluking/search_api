@@ -18,7 +18,7 @@ class AddressSearch extends Address
     {
         return [
             [['id'], 'integer'],
-            [['oblast', 'region', 'city', 'city_region', 'street'], 'safe'],
+            [['oblast', 'region', 'city', 'pure_city', 'city_region', 'street', 'pure_street'], 'safe'],
         ];
     }
 
@@ -64,8 +64,10 @@ class AddressSearch extends Address
         $query->andFilterWhere(['like', 'oblast', $this->oblast])
             ->andFilterWhere(['like', 'region', $this->region])
             ->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'pure_city', $this->pure_city])
             ->andFilterWhere(['like', 'city_region', $this->city_region])
-            ->andFilterWhere(['like', 'street', $this->street]);
+            ->andFilterWhere(['like', 'street', $this->street])
+            ->andFilterWhere(['like', 'pure_street', $this->pure_street]);
 
         return $dataProvider;
     }

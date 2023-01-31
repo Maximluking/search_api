@@ -18,9 +18,13 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'pure_city')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'city_region')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'street')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'pure_street')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
