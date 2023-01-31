@@ -78,7 +78,7 @@ environments/            contains environment-based overrides
 <h3>Installing sphinx on Ubuntu</h3>
 <ul>
   <li><code>sudo apt-get install sphinxsearch</code></li>
-  <li>setup database params (replace DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT) in first section of project sphinx config <code>backup/sphinx.conf</code> and <code>common/config/main.php</code> too in sphinx section</li>
+  <li>setup database params (replace DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT) in first section of project sphinx config <code>backup/sphinx.conf</code></li>
   <li><p>Copy sphinx config from project backup directory to directory <code>/etc/sphinxsearch/</code> on your OS</p></li>
   <li><p>Copy <code>backend/wordforms.txt</code> to <code>/usr/local/share/sphinx/wordforms/</code> directory or another(setup this params in sphinx.conf) </p></li>
   <li><p><code>sudo sed -i 's/START=no/START=yes/g' /etc/default/sphinxsearch</code></p></li>
@@ -86,4 +86,11 @@ environments/            contains environment-based overrides
   <li><p><code>sudo systemctl restart sphinxsearch.service</code> or <code>sudo systemctl start sphinxsearch.service</code></p></li>
   <li><p>You can add next command to cron for schedule indexing<code>@hourly /usr/bin/indexer --rotate --config /etc/sphinxsearch/sphinx.conf --all</code></p></li>
   <li><p>Use <code>sudo indexer --all --rotate</code> for reindexing when sphinx is On</p></li>
+</ul>
+
+<h3>Api endpoints</h3>
+<p>Minimal length of search sentence must be 3 and more letters</p>
+<ul>
+  <li><p>GET <code>/api/address/city?city=search_town</code> - get all cities, which have name search_town</p></li>
+  <li><p>GET <code>/api/address/street?oblast=search_oblast&region=search_region&city=search_city&street=search_street</code> - get all streets which have name search_street, params: search_oblast, search_region, search_city you must use from first endpoint answer. You can use params for first and second endpoints -- per-page (1-100 items per page, default 20), -- page - pagination param if response has more than one page</p></li>
 </ul>
