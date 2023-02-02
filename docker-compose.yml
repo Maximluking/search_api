@@ -1,38 +1,66 @@
 version: '3.2'
-
+networks:
+  default:
+    driver: bridge
 services:
-
-  frontend:
-    build: frontend
-    ports:
-      - 20080:80
+  api:
+    build:
+      context: ./
     volumes:
-      # Re-use local composer cache via host-volume
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      # Mount source-code for development
-      - ./:/app
-
-  backend:
-    build: backend
+      - ./:/app:delegated
+      - /app/vendor
+      - ./docker/conf.d/000-default.conf:/etc/apache2/sites-available/000-default.conf
     ports:
-      - 21080:80
-    volumes:
-      # Re-use local composer cache via host-volume
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      # Mount source-code for development
-      - ./:/app
-
-  mysql:
+      - 80:80
+    networks:
+      - default
+    depends_on:
+      - db
+      - sphinx
+  db:
     image: mysql:5.7
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=verysecret
-      - MYSQL_DATABASE=yii2advanced
-      - MYSQL_USER=yii2advanced
-      - MYSQL_PASSWORD=secret
-
-  #pgsql:
-  #  image: postgres:9.5
-  #  environment:
-  #    - POSTGRES_DB=yii2advanced
-  #    - POSTGRES_USER=yii2advanced
-  #    - POSTGRES_PASSWORD=secret
+      - MYSQL_DATABASE=my_database_name
+      - MYSQL_USER=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - "./docker/mysql:/var/lib/mysql"
+      - "./backup/:/backup/"
+      - ./docker/sphinx/myconf/my.cnf:/etc/mysql/conf.d/mysql.cnf
+    networks:
+      - default
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports:
+      - '8888:80'
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - UPLOAD_LIMIT=500M
+    depends_on:
+      - db
+  sphinx:
+    image: jc21/sphinxsearch
+    ports:
+      - 9306:9306
+      - 9312:9312
+    volumes:
+      - ./docker/sphinx/data:/var/lib/sphinx/data
+      - ./docker/sphinx:/var/run/sphinx
+      - ./docker/sphinx:/var/log/sphinx
+      - ./docker/sphinx:/var/index/sphinx
+      - ./docker/sphinx/sphinx.conf:/etc/sphinx/sphinx.conf
+      - ./docker/sphinx/myconf/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - default
+    depends_on:
+      - db

@@ -1,0 +1,42 @@
+[Thu Feb  2 10:02:16.895 2023] [1] listening on all interfaces, port=9312
+[Thu Feb  2 10:02:16.895 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:02:16.897 2023] [8] WARNING: index 'search_api_fields_full': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_full.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:02:16.897 2023] [7] WARNING: index 'search_api_fields_short': prealloc: failed to open /opt/lib/sphinx/data/search_api_fields_short.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:02:16.898 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:02:16.901 2023] [1] shutdown complete
+[Thu Feb  2 10:04:01.470 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:04:01.471 2023] [1] listening on all interfaces, port=3306
+[Thu Feb  2 10:04:01.472 2023] [7] WARNING: index 'search_api_fields_short': prealloc: failed to open /opt/lib/sphinx/data/search_api_fields_short.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:04:01.472 2023] [8] WARNING: index 'search_api_fields_full': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_full.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:04:01.473 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:04:01.477 2023] [1] shutdown complete
+[Thu Feb  2 10:06:23.224 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:06:23.226 2023] [1] listening on all interfaces, port=3306
+[Thu Feb  2 10:06:23.245 2023] [8] WARNING: index 'search_api_fields_short': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_short.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:06:23.250 2023] [7] WARNING: index 'search_api_fields_full': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_full.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:06:23.250 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:06:23.255 2023] [1] shutdown complete
+[Thu Feb  2 10:23:26.352 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:23:26.368 2023] [1] listening on all interfaces, port=3306
+[Thu Feb  2 10:23:26.398 2023] [7] WARNING: index 'search_api_fields_short': prealloc: /opt/sphinx/lib/data/search_api_fields_short.sph is v.42 (from Sphinx 2.x), binary is v.55; NOT SERVING
+[Thu Feb  2 10:23:26.418 2023] [8] WARNING: index 'search_api_fields_full': prealloc: /opt/sphinx/lib/data/search_api_fields_full.sph is v.42 (from Sphinx 2.x), binary is v.55; NOT SERVING
+[Thu Feb  2 10:23:26.419 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:23:26.424 2023] [1] shutdown complete
+[Thu Feb  2 10:24:54.546 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:24:54.547 2023] [1] listening on all interfaces, port=3306
+[Thu Feb  2 10:24:54.555 2023] [7] WARNING: index 'search_api_fields_short': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_short.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:24:54.562 2023] [8] WARNING: index 'search_api_fields_full': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_full.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:24:54.563 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:24:54.567 2023] [1] shutdown complete
+[Thu Feb  2 10:27:14.904 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:27:14.905 2023] [1] listening on all interfaces, port=3306
+[Thu Feb  2 10:27:14.919 2023] [7] WARNING: index 'search_api_fields_short': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_short.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:27:14.928 2023] [8] WARNING: index 'search_api_fields_full': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_full.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:27:14.928 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:27:14.933 2023] [1] shutdown complete
+[Thu Feb  2 10:46:45.313 2023] [1] listening on all interfaces, port=9312
+[Thu Feb  2 10:46:45.315 2023] [1] listening on all interfaces, port=9306
+[Thu Feb  2 10:46:45.338 2023] [7] WARNING: index 'search_api_fields_short': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_short.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:46:45.346 2023] [8] WARNING: index 'search_api_fields_full': prealloc: failed to open /opt/sphinx/lib/data/search_api_fields_full.sph: No such file or directory; NOT SERVING
+[Thu Feb  2 10:46:45.347 2023] [1] FATAL: no valid indexes to serve
+[Thu Feb  2 10:46:45.352 2023] [1] shutdown complete
