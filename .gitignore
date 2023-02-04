@@ -6,6 +6,8 @@
 # phpstorm project files
 .idea
 
+
+./docker/mysql
 # netbeans project files
 nbproject
 
@@ -33,7 +35,7 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
-
+.env
 # ignore generated files
 /frontend/web/index.php
 /frontend/web/index-test.php
